@@ -12,12 +12,25 @@ class Ideas < Sinatra::Base
     erb :edit
   end
 
-  put "/apps/:id" do
-    app = App.find(params[:id])
-    app.update(title: params[:title], description: params[:description])
+  delete "/apps/:id" do
+    App.find(params[:id]).destroy
     redirect "/apps"
   end
-  
+
+  #get "/apps/:id" do
+  #  @app = App.find(params[:id])
+  #  erb :app
+  #end
+
+  put "/apps/:id" do
+    app = App.find(params[:id])
+    app.update(
+      title: params[:title], 
+      description: params[:description]
+    )
+    redirect "/apps"
+  end
+
   get "/apps" do
     @apps = App.all
     erb :apps
@@ -25,9 +38,12 @@ class Ideas < Sinatra::Base
 
   post "/apps" do
     App.create(
-      title: params[:title],
+      title: params[:title], 
       description: params[:description]
     )
     redirect "/apps"
+  end
+
+  delete "/apps/:id" do
   end
 end

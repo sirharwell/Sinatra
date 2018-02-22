@@ -8,8 +8,11 @@
           <p><%= app.description %></p>
         </div>
         <div class="card-action">
-          <a href="/apps/<%= app.id %>/edit">Edit</a>
-          <a href="#">Delete</a>
+          <a class="btn" href="/apps/<%= app.id %>/edit">Edit</a>
+          <form action="/apps/<%= app.id %>" method="POST">
+            <input type="hidden" name="_method" value="DELETE" />
+            <button class="btn red">Delete</button>
+          </form>
         </div>
       </div>
     </div>
