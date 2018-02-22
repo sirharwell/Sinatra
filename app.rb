@@ -6,11 +6,12 @@ require 'rubygems'
 require 'sinatra'
 require 'sinatra/activerecord'
 require './environments'
-
+require './models/app'
 require_relative 'routes'
 
 class Ideas < Sinatra::Base
   set :root, File.dirname(__FILE__)
   enable :sessions
-  set :views, Proc.new { File.join(root, "views")}
+  set :views, Proc.new { File.join(root, "views") }
+  register Sinatra::ActiveRecordExtension
 end
