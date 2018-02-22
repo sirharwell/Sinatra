@@ -7,6 +7,17 @@ class Ideas < Sinatra::Base
     erb :new
   end
 
+  get "/apps/:id/edit" do
+    @app = App.find(params[:id])
+    erb :edit
+  end
+
+  put "/apps/:id" do
+    app = App.find(params[:id])
+    app.update(title: params[:title], description: params[:description])
+    redirect "/apps"
+  end
+  
   get "/apps" do
     @apps = App.all
     erb :apps
