@@ -1,5 +1,5 @@
 class Ideas < Sinatra::Base
   get "/" do
-    "Hey Frank!"
+    erb :home
   end
 end
