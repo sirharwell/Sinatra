@@ -1,7 +1,12 @@
 ENV['RACK_ENV'] ||= 'development'
-require 'sinatra/base'
 require 'bundler'
 Bundler.require :default, ENV['RACK_ENV'].to_sym
+require 'sinatra/base'
+require 'rubygems'
+require 'sinatra'
+require 'sinatra/activerecord'
+require './environments'
+
 require_relative 'routes'
 
 class Ideas < Sinatra::Base
